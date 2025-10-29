@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const leadership = [
+  {
+    name: 'Therese Rosenqvist',
+    role: 'Rektor',
+    focus: 'Trygghet & hållbarhet',
+    bio:
+      'Therese leder skolans utveckling med fokus på elevnära ledarskap. Hon driver hållbarhetsprojekt tillsammans med elevrådet och syns ofta på skolgården för att fånga elevernas idéer.'
+  },
+  {
+    name: 'Mikael Ahlberg',
+    role: 'Biträdande rektor åk 7–9',
+    focus: 'Studiero & framtidskompetenser',
+    bio:
+      'Mikael arbetar med kollegialt lärande och digitalisering i klassrummen. Han coachar arbetslagen i projektbaserat lärande och älskar att starta dagen med pingisturneringar i matsalen.'
+  },
+  {
+    name: 'Lisa Holmgren',
+    role: 'Elevhälsochef',
+    focus: 'Elevhälsa & inkludering',
+    bio:
+      'Lisa håller ihop skolans tvärprofessionella elevhälsoteam. Hon ser till att stödinsatser kommer på plats tidigt och att alla elever möts av en tillgänglig lärmiljö.'
+  }
+];
+
+const teachingTeams = [
+  {
+    name: 'Johanna Berg',
+    role: 'Lärare åk 1–3',
+    tags: ['Lässtart', 'Utelek'],
+    bio:
+      'Johanna älskar att skapa magiska högläsningsstunder och bygger små läshörnor i klassrummet. Hennes klass planterar egna kryddor som sedan används i hem- och konsumentkunskapen.'
+  },
+  {
+    name: 'Sadek Khalil',
+    role: 'Lärare matematik & NO',
+    tags: ['Makerkultur', 'Laborationer'],
+    bio:
+      'Sadek kombinerar laborationer med vardagsnära problemlösning. Han ansvarar för skolans makerspace där eleverna får programmera väderstationer och odlingssensorer.'
+  },
+  {
+    name: 'Emma Blom',
+    role: 'Lärare svenska & SO',
+    tags: ['Språkutveckling', 'Elevinflytande'],
+    bio:
+      'Emma arbetar genrepedagogiskt och bjuder in lokala aktörer till temaveckor. Hon leder skolans redaktionsråd där eleverna gör poddar om miljöfrågor och kultur.'
+  },
+  {
+    name: 'Jonatan Öster',
+    role: 'Idrottslärare',
+    tags: ['Rörelseglädje', 'Friluftsliv'],
+    bio:
+      'Jonatan ser till att hela skolan rör på sig varje dag. Han arrangerar “grön rast” med hinderbanor, dans och lugna yogastunder på gräsmattan.'
+  },
+  {
+    name: 'Anna-Lena Persson',
+    role: 'Speciallärare',
+    tags: ['Studieteknik', 'Tillgängliga lärmiljöer'],
+    bio:
+      'Anna-Lena arbetar tillsammans med arbetslagen för att skapa tydliga strukturer och smarta stödverktyg. Hon håller också workshops för vårdnadshavare om läxhjälp hemma.'
+  },
+  {
+    name: 'María González',
+    role: 'Lärare moderna språk',
+    tags: ['Språkglädje', 'Internationella samarbeten'],
+    bio:
+      'María leder skolans språkbytardagar där eleverna tränar spanska, franska och tyska genom kreativa stationer. Hennes klassrumsdörr är täckt av vykort från vänskolor i Europa.'
+  }
+];
+
+const supportTeam = [
+  {
+    name: 'Oskar Lind',
+    role: 'Skolkurator',
+    tags: ['Trygghet', 'Elevdemokrati'],
+    bio:
+      'Oskar har drop-in-fika i elevcaféet varje tisdag och håller i skolans samtalskort där eleverna får påverka allt från miljömål till rastaktiviteter.'
+  },
+  {
+    name: 'Frida Chen',
+    role: 'Skolsköterska',
+    tags: ['Hälsocoach', 'Hållbar livsstil'],
+    bio:
+      'Frida driver “Grön energi”-kampanjen där eleverna testar pulsbrädor, smoothie-cyklar och energisnåla mellanmål. Hon syns ofta i skolkökets odlingstorn tillsammans med elevrådet.'
+  },
+  {
+    name: 'Mohamed Ali',
+    role: 'Studie- och yrkesvägledare',
+    tags: ['Framtidsdrömmar', 'Praktikplatser'],
+    bio:
+      'Mohamed kopplar samman elever med lokala företag och universitet. Han arrangerar framtidsmässor där eleverna presenterar sina hållbarhetsidéer för Karlskronas näringsliv.'
+  }
+];
+
+const funHighlights = [
+  {
+    title: 'Fredagsfakta från klassrummen',
+    description:
+      'Varje fredag samlar lärarna veckans “wow-ögonblick” – allt från första lästa meningen till ett nytt växthusrekord – och delar i skolans nyhetsbrev.'
+  },
+  {
+    title: 'Lärarlagets gröna loppis',
+    description:
+      'På vårterminen arrangerar personalen en kläd- och bokloppis där intäkterna går till elevrådets hållbarhetsprojekt och nya planteringar på skolgården.'
+  },
+  {
+    title: 'Musik i korridoren',
+    description:
+      'Teamet byter spellista varje vecka – eleverna röstar fram teman som “peppig pop”, “klassiska favoriter” eller “lugna stunder” för att skapa rätt stämning.'
+  }
+];
+
+const funFact =
+  'Grenadjärskolans lärarkår har tillsammans 327 års erfarenhet av undervisning – ändå går ingen vecka utan att någon testar en ny kreativ idé i klassrummet!';
+---
+<BaseLayout
+  title="Möt lärarna på Grenadjärskolan"
+  description="Lär känna lärarna och elevhälsoteamet på Grenadjärskolan – engagerade pedagoger som skapar en trygg, modern och hållbar skolvardag."
+>
+  <section class="page-hero pattern-leaf" aria-labelledby="team-heading">
+    <div class="container">
+      <p class="eyebrow">Vårt team</p>
+      <h1 id="team-heading">Engagerade pedagoger med hjärtat i den gröna skolan</h1>
+      <p>
+        På Grenadjärskolan möter du lärare som kombinerar ämneskunskap med värme, kreativitet och hållbarhetstänk. Vi bygger
+        en skolkultur där relationer, rörelse och nyfikenhet går hand i hand med höga förväntningar.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="leadership-heading">
+    <div class="container">
+      <h2 class="section-heading" id="leadership-heading">Ledning & elevhälsa</h2>
+      <p class="section-intro">
+        Trygghet och studiero börjar med ett nära ledarskap och ett elevhälsoteam som samarbetar med varje klass. Tillsammans
+        håller vi dörrarna öppna – både bildligt och bokstavligt.
+      </p>
+      <div class="profile-grid">
+        {leadership.map((person) => (
+          <article class="profile-card" key={person.name}>
+            <h3>{person.name}</h3>
+            <div class="profile-meta">
+              <span class="chip">{person.role}</span>
+              <span class="chip">{person.focus}</span>
+            </div>
+            <p>{person.bio}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="teachers-heading">
+    <div class="container">
+      <h2 class="section-heading" id="teachers-heading">Lärarlag från förskoleklass till årskurs 9</h2>
+      <p class="section-intro">
+        Våra lärare skapar variation i undervisningen genom allt från skogslektioner till digitala studios. De planerar ihop med
+        fritidshemmet och låter elevernas idéer påverka varje tema.
+      </p>
+      <div class="profile-grid">
+        {teachingTeams.map((person) => (
+          <article class="profile-card" key={person.name}>
+            <h3>{person.name}</h3>
+            <div class="profile-meta">
+              <span class="chip">{person.role}</span>
+              {person.tags.map((tag) => (
+                <span class="chip" key={tag}>{tag}</span>
+              ))}
+            </div>
+            <p>{person.bio}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="support-heading">
+    <div class="container">
+      <h2 class="section-heading" id="support-heading">Stöd runt varje elev</h2>
+      <p class="section-intro">
+        Elevhälsoteamet och studie- och yrkesvägledningen finns nära eleverna under hela veckan. Vi träffar varje klass på
+        mentorspass, finns i korridorerna och startar gärna samtal under en promenad på skolgården.
+      </p>
+      <div class="profile-grid">
+        {supportTeam.map((person) => (
+          <article class="profile-card" key={person.name}>
+            <h3>{person.name}</h3>
+            <div class="profile-meta">
+              <span class="chip">{person.role}</span>
+              {person.tags.map((tag) => (
+                <span class="chip" key={tag}>{tag}</span>
+              ))}
+            </div>
+            <p>{person.bio}</p>
+          </article>
+        ))}
+      </div>
+      <div class="fact-banner" role="note">
+        <strong>Fun fact</strong>
+        <p>{funFact}</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" aria-hidden="true" />
+
+  <section class="section" aria-labelledby="behind-scenes-heading">
+    <div class="container">
+      <h2 class="section-heading" id="behind-scenes-heading">Bakom kulisserna</h2>
+      <p class="section-intro">
+        Vårt kollegium gillar att bjuda på överraskningar och inspirerande traditioner. De bygger en skola som känns både
+        modern och hjärtlig – varje dag.
+      </p>
+      <div class="fun-grid">
+        {funHighlights.map((item) => (
+          <article class="fun-card" key={item.title}>
+            <strong>{item.title}</strong>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
