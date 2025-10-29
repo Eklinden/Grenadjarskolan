@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { featuredTeachers } from '../data/teachers';
+import { findCurrentWeek, menuWeeks } from '../data/matsedel';
 
 const heroHighlights = [
   '🌿 Grön oas i Kasernområdet, Örebro',
@@ -110,6 +112,17 @@ const testimonials = [
     author: 'Elin, elev i årskurs 8'
   }
 ];
+
+const today = new Date();
+const currentWeek = findCurrentWeek(menuWeeks, today);
+const formattedWeek = `Vecka ${currentWeek.weekNumber}`;
+const weekdayFormatter = new Intl.DateTimeFormat('sv-SE', { weekday: 'long' });
+const currentWeekdayName = weekdayFormatter.format(today);
+const normalizedWeekday =
+  currentWeekdayName.charAt(0).toUpperCase() + currentWeekdayName.slice(1);
+const todaysMenu =
+  currentWeek.days.find((day) => day.day === normalizedWeekday) ??
+  currentWeek.days[0];
 ---
 <BaseLayout
   title="Grenadjärskolan – Kunskap, omsorg och framtidstro"
@@ -226,6 +239,65 @@ const testimonials = [
             <p>{service.description}</p>
           </article>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="lararteamet" aria-labelledby="teacher-preview-heading">
+    <div class="container">
+      <h2 class="section-heading" id="teacher-preview-heading">Möt några av våra lärare</h2>
+      <p class="section-intro">
+        Våra pedagoger finns nära eleverna varje dag. På skolans lärarsida presenterar vi hela teamet – här är ett axplock av de personer som gör skillnad i klassrummet just nu.
+      </p>
+      <div class="profile-grid profile-grid--preview" role="list">
+        {featuredTeachers.map((person) => (
+          <article class="profile-card" role="listitem" key={person.name}>
+            <h3>{person.name}</h3>
+            <div class="profile-meta">
+              <span class="chip">{person.role}</span>
+              {person.focus && <span class="chip">{person.focus}</span>}
+              {person.tags?.map((tag) => (
+                <span class="chip" key={tag}>{tag}</span>
+              ))}
+            </div>
+            <p>{person.bio}</p>
+          </article>
+        ))}
+      </div>
+      <div class="section-cta">
+        <a class="button button-secondary" href="/larare">Visa alla lärare</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="veckans-meny" aria-labelledby="menu-preview-heading">
+    <div class="container">
+      <h2 class="section-heading" id="menu-preview-heading">{formattedWeek}: veckans skolmat</h2>
+      <p class="section-intro">
+        Köket lagar maten från grunden med råvaror som eleverna ofta varit med och odlat. Veckans faktaruta: {currentWeek.fact}
+      </p>
+      <div class="menu-preview-grid" role="list">
+        {currentWeek.days.map((day) => (
+          <article
+            class={`menu-preview-card${day.day === todaysMenu.day ? ' is-today' : ''}`}
+            role="listitem"
+            key={day.day}
+          >
+            <div class="menu-preview-header">
+              <h3>{day.day}</h3>
+              {day.day === todaysMenu.day && <span class="chip chip--accent">Idag</span>}
+            </div>
+            <ul class="meal-list">
+              {day.meals.map((meal) => (
+                <li key={meal}>{meal}</li>
+              ))}
+            </ul>
+            <p class="meal-highlight">{day.highlight}</p>
+          </article>
+        ))}
+      </div>
+      <div class="section-cta">
+        <a class="button button-primary" href="/skolmat">Se alla veckors matsedel</a>
       </div>
     </div>
   </section>

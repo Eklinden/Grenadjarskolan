@@ -273,6 +273,20 @@ a:focus {
   padding: 4.5rem 0;
 }
 
+.section-alt {
+  background: linear-gradient(180deg, rgba(47, 143, 70, 0.08), rgba(47, 143, 70, 0));
+}
+
+.section-cta {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.section-cta .button {
+  min-width: 14rem;
+}
+
 .section-heading {
   font-family: var(--font-heading);
   font-size: clamp(1.8rem, 3vw, 2.5rem);
@@ -479,6 +493,10 @@ a:focus {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
+.profile-grid--preview .profile-card {
+  min-height: 100%;
+}
+
 .profile-card {
   background: var(--color-surface-alt);
   border-radius: var(--radius-medium);
@@ -530,6 +548,13 @@ a:focus {
   font-weight: 600;
 }
 
+.chip--accent {
+  background: rgba(255, 212, 92, 0.3);
+  border: 1px solid rgba(255, 212, 92, 0.65);
+  color: var(--color-primary-dark);
+  box-shadow: 0 6px 14px rgba(255, 212, 92, 0.25);
+}
+
 .fact-banner {
   margin-top: 3rem;
   background: rgba(255, 212, 92, 0.25);
@@ -560,11 +585,26 @@ a:focus {
   padding: 1.75rem;
   display: grid;
   gap: 0.85rem;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.schedule-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
 }
 
 .schedule-card h3 {
   margin: 0;
   font-size: 1.25rem;
+}
+
+.schedule-card.is-today {
+  border-color: rgba(47, 143, 70, 0.45);
+  box-shadow: 0 24px 48px rgba(47, 143, 70, 0.22);
+  transform: translateY(-4px);
 }
 
 .meal-list {
@@ -585,6 +625,117 @@ a:focus {
   background: rgba(255, 212, 92, 0.18);
   border-left: 4px solid rgba(255, 212, 92, 0.6);
   padding-left: 1rem;
+}
+
+.menu-preview-grid {
+  margin-top: 2.5rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.menu-preview-card {
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-medium);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  gap: 0.75rem;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.menu-preview-card.is-today {
+  border-color: rgba(47, 143, 70, 0.45);
+  transform: translateY(-4px);
+}
+
+.menu-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.menu-week-status {
+  margin-top: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.menu-week-list {
+  margin-top: 3rem;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.menu-week-card {
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-soft);
+  padding: 2.5rem;
+  display: grid;
+  gap: 1.75rem;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.menu-week-card.is-current {
+  border-color: rgba(47, 143, 70, 0.45);
+  box-shadow: 0 28px 56px rgba(47, 143, 70, 0.24);
+}
+
+.menu-week-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.menu-week-header h3 {
+  margin: 0;
+}
+
+.menu-week-dates {
+  margin: 0.35rem 0 0;
+  color: rgba(31, 42, 33, 0.7);
+  font-weight: 600;
+}
+
+.menu-week-fact {
+  margin: 0;
+  background: rgba(255, 212, 92, 0.22);
+  border-radius: var(--radius-medium);
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.menu-week-days {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.menu-week-day {
+  background: rgba(47, 143, 70, 0.06);
+  border-radius: var(--radius-medium);
+  padding: 1.5rem;
+  display: grid;
+  gap: 0.75rem;
+  border: 1px solid rgba(47, 143, 70, 0.12);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.menu-week-day h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.menu-week-day.is-today {
+  border-color: rgba(47, 143, 70, 0.45);
+  background: rgba(47, 143, 70, 0.12);
+  transform: translateY(-2px);
 }
 
 .info-grid {

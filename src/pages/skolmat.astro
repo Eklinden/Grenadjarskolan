@@ -1,53 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const weeklyMenu = [
-  {
-    day: 'Måndag',
-    meals: [
-      'Kärleksfull grön ärtsoppa med nybakat morotsbröd',
-      'Vegansk thaigryta med kokos, limeblad och lokalodlad pak choi',
-      'Päron och krispiga morotsstavar till mellanmål'
-    ],
-    highlight: 'Veckans gröna kickstart serveras med skolans egen basilikaolja.'
-  },
-  {
-    day: 'Tisdag',
-    meals: [
-      'Ugnsbakad lax med örttäcke och potatisstomp',
-      'Rostad blomkål med citron, pumpakärnor och bulgur',
-      'Äpple från Blekinge och overnight oats med lingon'
-    ],
-    highlight: 'Fiskrätten levereras av hållbart certifierade fiskare i Hjälmarens skärgård.'
-  },
-  {
-    day: 'Onsdag',
-    meals: [
-      'Mustig gryta på svenska bönor, rotfrukter och timjan',
-      'Falafelwraps med mynta-yoghurt och krispigt salladsberg',
-      'Smoothie på spenat, mango och havre'
-    ],
-    highlight: 'Onsdag betyder “världsmeny” där eleverna röstar fram kryddresor och nya smaker.'
-  },
-  {
-    day: 'Torsdag',
-    meals: [
-      'Klassisk pannkaksbuffé med hemlagad jordgubbssylt och råkostbord',
-      'Ärtrisoni med rostad paprika och örtolja',
-      'Vattenmelon, solrosfrön och citrusvatten med mynta'
-    ],
-    highlight: 'Skolans pannkakor steks på närproducerat mjöl och serveras med egenkomponerade påläggsstationer.'
-  },
-  {
-    day: 'Fredag',
-    meals: [
-      'Säsongsinspirerad tacobuffé med slow cooked bönchili och krispiga grönsaker',
-      'Majs- och ostgratinerad blomkål med salsa verde',
-      'Fruktspett och hemrostad müsli'
-    ],
-    highlight: 'Fredagar avslutas med matsals-dj och “gröna stjärnan”-utnämning till en klass med minst matsvinn.'
-  }
-];
+import {
+  findCurrentWeek,
+  isDateInWeek,
+  menuWeeks,
+  parseDate,
+  sortWeeks,
+  type MenuWeek
+} from '../data/matsedel';
 
 const infoCards = [
   {
@@ -90,6 +50,19 @@ const kitchenQuote = {
     'Vi vill att maten ska kännas som en glädjefylld paus mitt i skoldagen. Doften av nybakat bröd möter musiklistan som eleverna själva valt.',
   author: 'Köksmästare Sofia “Sof” Lindström'
 };
+
+const today = new Date();
+const sortedWeeks = sortWeeks(menuWeeks);
+const currentWeek = findCurrentWeek(menuWeeks, today);
+const isActiveWeek = isDateInWeek(currentWeek, today);
+const currentWeekLabel = `Vecka ${currentWeek.weekNumber}`;
+const weekdayFormatter = new Intl.DateTimeFormat('sv-SE', { weekday: 'long' });
+const currentWeekday = weekdayFormatter.format(today);
+const normalizedWeekday =
+  currentWeekday.charAt(0).toUpperCase() + currentWeekday.slice(1);
+const formatDate = new Intl.DateTimeFormat('sv-SE', { day: 'numeric', month: 'long' });
+
+const isWeekCurrent = (week: MenuWeek) => week.startDate === currentWeek.startDate;
 ---
 <BaseLayout
   title="Skolmat på Grenadjärskolan"
@@ -108,21 +81,83 @@ const kitchenQuote = {
 
   <section class="section" aria-labelledby="menu-heading">
     <div class="container">
-      <h2 class="section-heading" id="menu-heading">Veckans meny</h2>
+      <h2 class="section-heading" id="menu-heading">{currentWeekLabel}: veckans meny</h2>
       <p class="section-intro">
         Varje dag erbjuder vi ett lakto-ovo-alternativ, en vegansk rätt och ett färgsprakande salladsbord. Alla soppor serveras
-        med nygräddat bröd från vårt skolbageri.
+        med nygräddat bröd från vårt skolbageri. Veckans faktaruta: {currentWeek.fact}
+      </p>
+      <p class="menu-week-status">
+        {isActiveWeek
+          ? `Just nu är det ${normalizedWeekday.toLowerCase()} och maten som serveras hittar du nedan.`
+          : `Menyn gäller från ${formatDate.format(parseDate(currentWeek.startDate))}.`}
       </p>
       <div class="schedule-grid">
-        {weeklyMenu.map((day) => (
-          <article class="schedule-card" key={day.day}>
-            <h3>{day.day}</h3>
-            <ul class="meal-list">
-              {day.meals.map((meal) => (
-                <li key={meal}>{meal}</li>
-              ))}
-            </ul>
-            <p class="meal-highlight">{day.highlight}</p>
+        {currentWeek.days.map((day) => {
+          const isToday = isActiveWeek && day.day === normalizedWeekday;
+          return (
+            <article class={`schedule-card${isToday ? ' is-today' : ''}`} key={day.day}>
+              <div class="schedule-card-header">
+                <h3>{day.day}</h3>
+                {isToday && <span class="chip chip--accent">Idag</span>}
+              </div>
+              <ul class="meal-list">
+                {day.meals.map((meal) => (
+                  <li key={meal}>{meal}</li>
+                ))}
+              </ul>
+              <p class="meal-highlight">{day.highlight}</p>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" aria-labelledby="upcoming-heading">
+    <div class="container">
+      <h2 class="section-heading" id="upcoming-heading">Alla kommande veckor</h2>
+      <p class="section-intro">
+        Här hittar du matsedeln för hela terminen. Vi markerar tydligt vilken vecka som gäller just nu så att du enkelt kan planera mellanmål, utflykter och favoritdagar.
+      </p>
+      <div class="menu-week-list" role="list">
+        {sortedWeeks.map((week) => (
+          <article
+            class={`menu-week-card${isWeekCurrent(week) ? ' is-current' : ''}`}
+            role="listitem"
+            key={week.startDate}
+          >
+            <header class="menu-week-header">
+              <div>
+                <h3>Vecka {week.weekNumber}</h3>
+                <p class="menu-week-dates">Start {formatDate.format(parseDate(week.startDate))}</p>
+              </div>
+              {isWeekCurrent(week) && (
+                <span class="chip chip--accent">
+                  {isActiveWeek ? 'Pågående vecka' : 'Nästa meny'}
+                </span>
+              )}
+            </header>
+            <p class="menu-week-fact">Faktaruta: {week.fact}</p>
+            <div class="menu-week-days">
+              {week.days.map((day) => {
+                const isToday = isWeekCurrent(week) && isActiveWeek && day.day === normalizedWeekday;
+                return (
+                  <article
+                    class={`menu-week-day${isToday ? ' is-today' : ''}`}
+                    aria-current={isToday ? 'date' : undefined}
+                    key={`${week.startDate}-${day.day}`}
+                  >
+                    <h4>{day.day}</h4>
+                    <ul class="meal-list">
+                      {day.meals.map((meal) => (
+                        <li key={meal}>{meal}</li>
+                      ))}
+                    </ul>
+                    <p class="meal-highlight">{day.highlight}</p>
+                  </article>
+                );
+              })}
+            </div>
           </article>
         ))}
       </div>
