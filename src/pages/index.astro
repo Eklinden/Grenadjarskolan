@@ -1,0 +1,275 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const quickFacts = [
+  {
+    label: 'Elever F–9',
+    value: '430+',
+    description: 'Mindre klasser med fokus på trygghet och studiero.'
+  },
+  {
+    label: 'Elevhälsoteam',
+    value: 'Tvärprofessionellt',
+    description: 'Specialpedagoger, kurator, skolsköterska och studie- & yrkesvägledare.'
+  },
+  {
+    label: 'Profil',
+    value: 'Kunskap & omsorg',
+    description: 'En helhetssyn på varje elevs utveckling och lärande.'
+  }
+];
+
+const programmes = [
+  {
+    title: 'Förskoleklass',
+    description: 'En mjuk övergång från förskola till skola med lekfullt lärande, social träning och tydliga rutiner.'
+  },
+  {
+    title: 'Lågstadium (Åk 1–3)',
+    description: 'Grundläggande kunskaper i svenska, matematik och engelska kombineras med skapande ämnen och rörelse.'
+  },
+  {
+    title: 'Mellanstadium (Åk 4–6)',
+    description: 'Nyfikenhetsdrivet arbetssätt, fördjupning i SO/NO och tidiga digitala verktyg för att stärka elevernas förmågor.'
+  },
+  {
+    title: 'Högstadium (Åk 7–9)',
+    description: 'Ämnesbehöriga lärare, studieförberedande arbetssätt och vägledning inför framtida studier och yrkesval.'
+  }
+];
+
+const dayHighlights = [
+  {
+    title: 'Elevinflytande & mentorskap',
+    description: 'Varje elev har en personlig mentor och deltar i elevråd där idéer om skolmiljö och undervisning tas vidare.'
+  },
+  {
+    title: 'Hållbar skolmiljö',
+    description: 'Gröna gårdar, skolmat med högt näringsvärde och återkommande temaveckor om hållbar utveckling.'
+  },
+  {
+    title: 'Kultur & rörelse',
+    description: 'Musik, bild och drama samsas med idrott, friluftsdagar och samarbeten med lokala föreningar.'
+  }
+];
+
+const supportServices = [
+  {
+    title: 'Trygghetsarbete',
+    description: 'Tydliga ordningsregler, aktiva rastvärdar och en trygghetsgrupp som snabbt fångar upp signaler.'
+  },
+  {
+    title: 'Elevhälsa nära undervisningen',
+    description: 'Elevhälsoteamet arbetar tillsammans med lärarna för att tidigt sätta in åtgärder och anpassningar.'
+  },
+  {
+    title: 'Stöd i svenska som andraspråk',
+    description: 'Modersmålsundervisning och studiehandledning stärker elevernas flerspråkiga kompetens.'
+  }
+];
+
+const timeline = [
+  {
+    time: 'Våren 2025',
+    title: 'Öppet hus och skolvisningar',
+    description: 'Träffa elever, lärare och skolledning. Vi visar lokalerna och berättar om vår pedagogiska profil.'
+  },
+  {
+    time: '31 mars 2025',
+    title: 'Sista ansökningsdag för hösten 2025',
+    description: 'Ansök via Karlskrona kommuns e-tjänst eller kontakta expeditionen för hjälp med ansökan.'
+  },
+  {
+    time: 'Juni 2025',
+    title: 'Utskick av välkomstbrev',
+    description: 'Nya elever får information om klassplacering, terminsstart och sommarens läs- & matteutmaningar.'
+  }
+];
+
+const testimonials = [
+  {
+    quote:
+      'Grenadjärskolan har gett vår dotter studiero och självförtroende. Mentorskapet gör att vi alltid känner oss uppdaterade.',
+    author: 'Anna, vårdnadshavare i årskurs 5'
+  },
+  {
+    quote:
+      'Vi jobbar tätt ihop i arbetslagen och ser varje elev. Det kollegiala lärandet och elevhälsofokuset gör stor skillnad.',
+    author: 'Johan, lärare i matematik och NO'
+  },
+  {
+    quote:
+      'Här vågar jag testa nya idéer och jag får stöd om något känns svårt. Skolan lyssnar verkligen på oss elever.',
+    author: 'Elin, elev i årskurs 8'
+  }
+];
+---
+<BaseLayout title="Grenadjärskolan – Kunskap, omsorg och framtidstro" description="Upptäck Grenadjärskolan i Karlskrona: en F–9-skola som förenar höga akademiska ambitioner med ett tryggt socialt klimat.">
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="container hero-grid">
+      <div class="hero-card">
+        <h1 id="hero-heading">Välkommen till Grenadjärskolan</h1>
+        <p>
+          Grenadjärskolan är en F–9-skola i hjärtat av Karlskrona där eleverna får växa i en varm gemenskap.
+          Vi förenar höga kunskapsresultat med omtanke, elevinflytande och en trygg miljö för alla.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#kontakt">Boka skolbesök</a>
+          <a class="button button-secondary" href="#program">Utforska våra program</a>
+        </div>
+      </div>
+      <div class="hero-stats" aria-label="Snabbfakta om Grenadjärskolan">
+        {quickFacts.map((fact) => (
+          <article class="stat-card" key={fact.label}>
+            <p class="stat-value" aria-label={fact.label}>{fact.value}</p>
+            <h2>{fact.label}</h2>
+            <p>{fact.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="om" aria-labelledby="about-heading">
+    <div class="container">
+      <h2 class="section-heading" id="about-heading">Om Grenadjärskolan</h2>
+      <p class="section-intro">
+        Grenadjärskolan kombinerar gedigen undervisning med ett nära elevhälsoarbete. Våra elever har tillgång till modern teknik,
+        inspirerande lärmiljöer och engagerade lärare som följer deras utveckling genom hela skolgången.
+      </p>
+      <div class="card-grid" role="list">
+        <article class="card" role="listitem">
+          <h3>En trygg start</h3>
+          <p>
+            Vi erbjuder introduktionsprogram och övergångssamtal så att varje elev känner sig välkommen från första dagen. Mentorer och fritidspedagoger samarbetar tätt med vårdnadshavare.
+          </p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>Digital kompetens</h3>
+          <p>
+            Eleverna arbetar med moderna digitala verktyg, från lärplattor i lågstadiet till personliga datorer på högstadiet. Digitalt skapande, källkritik och programmering integreras i undervisningen.
+          </p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>Helhetsperspektiv</h3>
+          <p>
+            Vi ser till hela eleven – lärande, hälsa och social utveckling. Fritidshemmet och elevhälsan planerar tillsammans med lärarna för att skapa balans under hela skoldagen.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="program" aria-labelledby="program-heading">
+    <div class="container">
+      <h2 class="section-heading" id="program-heading">Våra program och stadier</h2>
+      <p class="section-intro">
+        Vi erbjuder en sammanhållen skolgång från förskoleklass till årskurs 9. Varje stadium har sin egen profil, men vi arbetar tillsammans för att skapa röda trådar i elevernas lärande.
+      </p>
+      <div class="card-grid" role="list">
+        {programmes.map((programme) => (
+          <article class="card" role="listitem" key={programme.title}>
+            <h3>{programme.title}</h3>
+            <p>{programme.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="vardag" aria-labelledby="everyday-heading">
+    <div class="container">
+      <h2 class="section-heading" id="everyday-heading">Så ser vår skolvardag ut</h2>
+      <p class="section-intro">
+        Variation och tydlighet präglar dagarna på Grenadjärskolan. Vi växlar mellan lärarledda genomgångar, grupparbeten, laborationer och utevistelse för att skapa energi och lust att lära.
+      </p>
+      <div class="features-grid" role="list">
+        {dayHighlights.map((highlight) => (
+          <article class="feature" role="listitem" key={highlight.title}>
+            <h3>{highlight.title}</h3>
+            <p>{highlight.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="stodochtrygghet" aria-labelledby="support-heading">
+    <div class="container">
+      <h2 class="section-heading" id="support-heading">Stöd, trygghet och elevhälsa</h2>
+      <p class="section-intro">
+        Elevhälsan är navet i vårt arbete för likvärdighet. Genom täta uppföljningar, tillgängliga lärmiljöer och tidiga insatser skapar vi förutsättningar för alla att lyckas.
+      </p>
+      <div class="card-grid" role="list">
+        {supportServices.map((service) => (
+          <article class="card" role="listitem" key={service.title}>
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="timeline-heading">
+    <div class="container">
+      <h2 class="section-heading" id="timeline-heading">Viktiga datum</h2>
+      <p class="section-intro">Planera in årets händelser och deadlines. Vi uppdaterar kalendern löpande under terminen.</p>
+      <div class="timeline" role="list">
+        {timeline.map((item) => (
+          <article class="timeline-item" role="listitem" key={item.title}>
+            <time dateTime={item.time}>{item.time}</time>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="testimonial-heading">
+    <div class="container">
+      <h2 class="section-heading" id="testimonial-heading">Röster från skolans vardag</h2>
+      <div class="testimonials" role="list">
+        {testimonials.map((item) => (
+          <figure class="testimonial" role="listitem" key={item.author}>
+            <blockquote>
+              <p>“{item.quote}”</p>
+            </blockquote>
+            <figcaption>
+              <cite>{item.author}</cite>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="kontakt" aria-labelledby="contact-heading">
+    <div class="container contact-grid">
+      <div class="contact-panel">
+        <h2 class="section-heading" id="contact-heading">Kontakta oss</h2>
+        <p>Har du frågor om verksamheten, vill du boka ett möte eller anmäla ditt barn? Hör av dig så hjälper vi dig vidare.</p>
+        <p>
+          <strong>Telefon:</strong> <a href="tel:+46455264930">0455-26 49 30</a><br />
+          <strong>E-post:</strong> <a href="mailto:info@grenadjarskolan.se">info@grenadjarskolan.se</a>
+        </p>
+        <p>
+          <strong>Besök:</strong> Östra Vittusgatan 1, 371 34 Karlskrona<br />
+          <strong>Expeditionstid:</strong> Vardagar 08.00–16.00
+        </p>
+      </div>
+      <div>
+        <h3>Kontakta elevhälsoteamet</h3>
+        <p>
+          Elevhälsoteamet når du via expeditionen eller direkt via <a href="mailto:elevhalsa@grenadjarskolan.se">elevhalsa@grenadjarskolan.se</a>.
+          Vi arbetar förebyggande och kan hjälpa till med allt från studieteknik till stödinsatser.
+        </p>
+        <h3>Hitta hit</h3>
+        <p>
+          Grenadjärskolan ligger centralt med närhet till kollektivtrafik. Busshållplatsen “Blekinge Tingsrätt” når du på två minuter och Karlskrona centralstation på tio.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

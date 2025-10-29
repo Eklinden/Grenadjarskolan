@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+
+const { title = 'Grenadjärskolan', description = 'En varm och välkomnande skola i hjärtat av Karlskrona.' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Hoppa till innehållet</a>
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <div class="branding">
+          <span class="logo" aria-hidden="true">G</span>
+          <div class="brand-text">
+            <span class="brand-name">Grenadjärskolan</span>
+            <span class="brand-tagline">Kunskap, omsorg och framtidstro</span>
+          </div>
+        </div>
+        <nav aria-label="Huvudmeny">
+          <ul class="nav-list">
+            <li><a href="#om">Om skolan</a></li>
+            <li><a href="#program">Program</a></li>
+            <li><a href="#vardag">Skolvardag</a></li>
+            <li><a href="#stodochtrygghet">Stöd & trygghet</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="main-content">
+      <slot />
+    </main>
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <div>
+          <h2 class="footer-heading">Grenadjärskolan</h2>
+          <p>Östra Vittusgatan 1, 371 34 Karlskrona</p>
+          <p><a href="tel:+46455264930">0455-26 49 30</a> · <a href="mailto:info@grenadjarskolan.se">info@grenadjarskolan.se</a></p>
+        </div>
+        <div>
+          <h2 class="footer-heading">Snabblänkar</h2>
+          <ul class="footer-list">
+            <li><a href="#om">Om skolan</a></li>
+            <li><a href="#program">Våra program</a></li>
+            <li><a href="#vardag">Vår vardag</a></li>
+            <li><a href="#kontakt">Kontakta oss</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer-heading">Tillgänglighet</h2>
+          <p>Vi arbetar aktivt för att vår skola och webbplats ska vara tillgängliga för alla. Kontakta oss gärna om du har synpunkter.</p>
+        </div>
+      </div>
+      <p class="footer-bottom">© {new Date().getFullYear()} Grenadjärskolan. Alla rättigheter förbehållna.</p>
+    </footer>
+  </body>
+</html>
