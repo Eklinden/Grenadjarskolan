@@ -1,6 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const heroHighlights = [
+  '🌿 Grön oas mitt i Karlskrona',
+  '🎨 Kreativa klassrum och makerspace',
+  '🤝 Elever, lärare och vårdnadshavare i nära samarbete'
+];
+
 const quickFacts = [
   {
     label: 'Elever F–9',
@@ -108,14 +114,20 @@ const testimonials = [
   <section class="hero" aria-labelledby="hero-heading">
     <div class="container hero-grid">
       <div class="hero-card">
+        <div class="hero-badges" aria-hidden="true">
+          {heroHighlights.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </div>
         <h1 id="hero-heading">Välkommen till Grenadjärskolan</h1>
         <p>
-          Grenadjärskolan är en F–9-skola i hjärtat av Karlskrona där eleverna får växa i en varm gemenskap.
-          Vi förenar höga kunskapsresultat med omtanke, elevinflytande och en trygg miljö för alla.
+          Grenadjärskolan är en F–9-skola i hjärtat av Karlskrona där eleverna får växa i en varm och grön gemenskap.
+          Vi förenar höga kunskapsresultat med omtanke, elevinflytande och en trygg miljö som sprudlar av energi.
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="#kontakt">Boka skolbesök</a>
           <a class="button button-secondary" href="#program">Utforska våra program</a>
+          <a class="button button-tertiary" href="/larare">Möt våra lärare</a>
         </div>
       </div>
       <div class="hero-stats" aria-label="Snabbfakta om Grenadjärskolan">

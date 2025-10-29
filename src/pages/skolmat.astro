@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const weeklyMenu = [
+  {
+    day: 'Måndag',
+    meals: [
+      'Kärleksfull grön ärtsoppa med nybakat morotsbröd',
+      'Vegansk thaigryta med kokos, limeblad och lokalodlad pak choi',
+      'Päron och krispiga morotsstavar till mellanmål'
+    ],
+    highlight: 'Veckans gröna kickstart serveras med skolans egen basilikaolja.'
+  },
+  {
+    day: 'Tisdag',
+    meals: [
+      'Ugnsbakad lax med örttäcke och potatisstomp',
+      'Rostad blomkål med citron, pumpakärnor och bulgur',
+      'Äpple från Blekinge och overnight oats med lingon'
+    ],
+    highlight: 'Fiskrätten levereras av hållbart certifierade fiskare i Karlskrona skärgård.'
+  },
+  {
+    day: 'Onsdag',
+    meals: [
+      'Mustig gryta på svenska bönor, rotfrukter och timjan',
+      'Falafelwraps med mynta-yoghurt och krispigt salladsberg',
+      'Smoothie på spenat, mango och havre'
+    ],
+    highlight: 'Onsdag betyder “världsmeny” där eleverna röstar fram kryddresor och nya smaker.'
+  },
+  {
+    day: 'Torsdag',
+    meals: [
+      'Klassisk pannkaksbuffé med hemlagad jordgubbssylt och råkostbord',
+      'Ärtrisoni med rostad paprika och örtolja',
+      'Vattenmelon, solrosfrön och citrusvatten med mynta'
+    ],
+    highlight: 'Skolans pannkakor steks på närproducerat mjöl och serveras med egenkomponerade påläggsstationer.'
+  },
+  {
+    day: 'Fredag',
+    meals: [
+      'Säsongsinspirerad tacobuffé med slow cooked bönchili och krispiga grönsaker',
+      'Majs- och ostgratinerad blomkål med salsa verde',
+      'Fruktspett och hemrostad müsli'
+    ],
+    highlight: 'Fredagar avslutas med matsals-dj och “gröna stjärnan”-utnämning till en klass med minst matsvinn.'
+  }
+];
+
+const infoCards = [
+  {
+    title: 'Närproducerat & ekologiskt',
+    description:
+      'Minst 70% av råvarorna kommer från Blekinge och Skåne. Vi samarbetar med lokala odlare för att erbjuda säsongsbaserade grönsaker, mjöl och mejeriprodukter.'
+  },
+  {
+    title: 'Elevinflytande i matsalen',
+    description:
+      'Elevköket “Smakpatrullen” provlagar nya recept tillsammans med kockarna och röstar varje månad fram en favorit som får plats på menyn.'
+  },
+  {
+    title: 'Specialkost & allergier',
+    description:
+      'Vårt kök är certifierat för specialkost. Hör av dig till skolsköterskan för individuella behov så planerar vi säkra alternativ i god tid.'
+  }
+];
+
+const sustainabilityHighlights = [
+  {
+    title: 'Klimatsmarta val',
+    description:
+      'Varje vecka markeras de mest klimatsmarta rätterna med “Grön stjärna”. Eleverna får se hur valet påverkar klimatavtrycket.'
+  },
+  {
+    title: 'Odling året runt',
+    description:
+      'I matsalens växthus odlar vi örter och sallad tillsammans med eleverna. De används direkt i dagens salladsbuffé.'
+  },
+  {
+    title: 'Zero waste-torsdag',
+    description:
+      'På torsdagar väger klasserna sitt matsvinn och delar tips i skolans hållbarhetskanaler. Vinsten: en extra utelektion med rörelseglädje.'
+  }
+];
+
+const kitchenQuote = {
+  text:
+    'Vi vill att maten ska kännas som en glädjefylld paus mitt i skoldagen. Doften av nybakat bröd möter musiklistan som eleverna själva valt.',
+  author: 'Köksmästare Sofia “Sof” Lindström'
+};
+---
+<BaseLayout
+  title="Skolmat på Grenadjärskolan"
+  description="Upptäck veckans matsedel på Grenadjärskolan – hållbar skolmat med mycket grönt, lokala råvaror och elevinflytande."
+>
+  <section class="page-hero" aria-labelledby="food-heading">
+    <div class="container">
+      <p class="eyebrow">Matsedel</p>
+      <h1 id="food-heading">Skolmat som smakar framtidstro</h1>
+      <p>
+        Våra kockar lagar näringsrika måltider med mycket grönt, lokala råvaror och kryddor från skolans egna odlingar. Här
+        hittar du veckans meny och hur vi gör matsalen till en plats fylld av gemenskap.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="menu-heading">
+    <div class="container">
+      <h2 class="section-heading" id="menu-heading">Veckans meny</h2>
+      <p class="section-intro">
+        Varje dag erbjuder vi ett lakto-ovo-alternativ, en vegansk rätt och ett färgsprakande salladsbord. Alla soppor serveras
+        med nygräddat bröd från vårt skolbageri.
+      </p>
+      <div class="schedule-grid">
+        {weeklyMenu.map((day) => (
+          <article class="schedule-card" key={day.day}>
+            <h3>{day.day}</h3>
+            <ul class="meal-list">
+              {day.meals.map((meal) => (
+                <li key={meal}>{meal}</li>
+              ))}
+            </ul>
+            <p class="meal-highlight">{day.highlight}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="focus-heading">
+    <div class="container">
+      <h2 class="section-heading" id="focus-heading">Så skapar vi matglädje</h2>
+      <p class="section-intro">
+        Vi ser matsalen som skolans vardagsrum. Här finns plats för lugn, samtal och inspiration – alltid med hållbarhet och
+        elevinflytande i centrum.
+      </p>
+      <div class="info-grid">
+        {infoCards.map((card) => (
+          <article class="info-card" key={card.title}>
+            <h3>{card.title}</h3>
+            <p>{card.description}</p>
+          </article>
+        ))}
+      </div>
+      <div class="fun-grid">
+        {sustainabilityHighlights.map((item) => (
+          <article class="fun-card" key={item.title}>
+            <strong>{item.title}</strong>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+      <div class="quote-card">
+        <p>“{kitchenQuote.text}”</p>
+        <cite>{kitchenQuote.author}</cite>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
