@@ -1,7 +1,10 @@
 ---
 import '../styles/global.css';
 
-const { title = 'Grenadjärskolan', description = 'En varm och välkomnande skola i hjärtat av Karlskrona.' } = Astro.props;
+const {
+  title = 'Grenadjärskolan',
+  description = 'En varm och välkomnande skola i hjärtat av Örebro.'
+} = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="sv">
@@ -42,8 +45,11 @@ const { title = 'Grenadjärskolan', description = 'En varm och välkomnande skol
       <div class="container footer-inner">
         <div>
           <h2 class="footer-heading">Grenadjärskolan</h2>
-          <p>Östra Vittusgatan 1, 371 34 Karlskrona</p>
-          <p><a href="tel:+46455264930">0455-26 49 30</a> · <a href="mailto:info@grenadjarskolan.se">info@grenadjarskolan.se</a></p>
+          <p>Grenadjärsgatan 1, 702 17 Örebro</p>
+          <p>
+            <a href="tel:+4619213950">019-21 39 50</a> ·
+            <a href="mailto:grenadjarskolan@orebro.se">grenadjarskolan@orebro.se</a>
+          </p>
         </div>
         <div>
           <h2 class="footer-heading">Snabblänkar</h2>
@@ -63,5 +69,34 @@ const { title = 'Grenadjärskolan', description = 'En varm och välkomnande skol
       </div>
       <p class="footer-bottom">© {new Date().getFullYear()} Grenadjärskolan. Alla rättigheter förbehållna.</p>
     </footer>
+    <script is:inline>
+      const header = document.querySelector('.site-header');
+      let lastScrollY = window.scrollY;
+      let ticking = false;
+
+      const updateHeaderVisibility = () => {
+        const currentY = window.scrollY;
+        if (!header) return;
+
+        const isScrollingDown = currentY > lastScrollY;
+        const shouldHide = currentY > 120 && isScrollingDown;
+
+        header.classList.toggle('site-header--hidden', shouldHide);
+
+        lastScrollY = currentY;
+        ticking = false;
+      };
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (!ticking) {
+            window.requestAnimationFrame(updateHeaderVisibility);
+            ticking = true;
+          }
+        },
+        { passive: true }
+      );
+    </script>
   </body>
 </html>

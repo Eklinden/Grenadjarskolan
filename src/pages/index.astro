@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const heroHighlights = [
-  '🌿 Grön oas mitt i Karlskrona',
+  '🌿 Grön oas i Kasernområdet, Örebro',
   '🎨 Kreativa klassrum och makerspace',
   '🤝 Elever, lärare och vårdnadshavare i nära samarbete'
 ];
@@ -78,12 +78,13 @@ const timeline = [
   {
     time: 'Våren 2025',
     title: 'Öppet hus och skolvisningar',
-    description: 'Träffa elever, lärare och skolledning. Vi visar lokalerna och berättar om vår pedagogiska profil.'
+    description:
+      'Träffa elever, lärare och skolledning. Vi visar våra lokaler i kasernområdet och berättar om vår pedagogiska profil.'
   },
   {
     time: '31 mars 2025',
     title: 'Sista ansökningsdag för hösten 2025',
-    description: 'Ansök via Karlskrona kommuns e-tjänst eller kontakta expeditionen för hjälp med ansökan.'
+    description: 'Ansök via Örebro kommuns e-tjänst eller kontakta expeditionen för hjälp med ansökan.'
   },
   {
     time: 'Juni 2025',
@@ -110,7 +111,10 @@ const testimonials = [
   }
 ];
 ---
-<BaseLayout title="Grenadjärskolan – Kunskap, omsorg och framtidstro" description="Upptäck Grenadjärskolan i Karlskrona: en F–9-skola som förenar höga akademiska ambitioner med ett tryggt socialt klimat.">
+<BaseLayout
+  title="Grenadjärskolan – Kunskap, omsorg och framtidstro"
+  description="Upptäck Grenadjärskolan i Örebro: en F–9-skola som förenar höga akademiska ambitioner med ett tryggt socialt klimat."
+>
   <section class="hero" aria-labelledby="hero-heading">
     <div class="container hero-grid">
       <div class="hero-card">
@@ -121,7 +125,7 @@ const testimonials = [
         </div>
         <h1 id="hero-heading">Välkommen till Grenadjärskolan</h1>
         <p>
-          Grenadjärskolan är en F–9-skola i hjärtat av Karlskrona där eleverna får växa i en varm och grön gemenskap.
+          Grenadjärskolan är en F–9-skola i hjärtat av Örebro där eleverna får växa i en varm och grön gemenskap.
           Vi förenar höga kunskapsresultat med omtanke, elevinflytande och en trygg miljö som sprudlar av energi.
         </p>
         <div class="hero-actions">
@@ -147,7 +151,8 @@ const testimonials = [
       <h2 class="section-heading" id="about-heading">Om Grenadjärskolan</h2>
       <p class="section-intro">
         Grenadjärskolan kombinerar gedigen undervisning med ett nära elevhälsoarbete. Våra elever har tillgång till modern teknik,
-        inspirerande lärmiljöer och engagerade lärare som följer deras utveckling genom hela skolgången.
+        inspirerande lärmiljöer och engagerade lärare som följer deras utveckling genom hela skolgången. Skolan ligger i det
+        historiska kasernområdet, med Stadsparken och friluftsmuseet Wadköping runt hörnet för utelektioner och kulturutflykter.
       </p>
       <div class="card-grid" role="list">
         <article class="card" role="listitem">
@@ -165,7 +170,8 @@ const testimonials = [
         <article class="card" role="listitem">
           <h3>Helhetsperspektiv</h3>
           <p>
-            Vi ser till hela eleven – lärande, hälsa och social utveckling. Fritidshemmet och elevhälsan planerar tillsammans med lärarna för att skapa balans under hela skoldagen.
+            Vi ser till hela eleven – lärande, hälsa och social utveckling. Fritidshemmet och elevhälsan planerar tillsammans med
+            lärarna för att skapa balans under hela skoldagen och samarbetar med Örebro kommuns stödfunktioner.
           </p>
         </article>
       </div>
@@ -193,7 +199,8 @@ const testimonials = [
     <div class="container">
       <h2 class="section-heading" id="everyday-heading">Så ser vår skolvardag ut</h2>
       <p class="section-intro">
-        Variation och tydlighet präglar dagarna på Grenadjärskolan. Vi växlar mellan lärarledda genomgångar, grupparbeten, laborationer och utevistelse för att skapa energi och lust att lära.
+        Variation och tydlighet präglar dagarna på Grenadjärskolan. Vi växlar mellan lärarledda genomgångar, grupparbeten, laborationer
+        och utevistelse i Stadsträdgården eller längs Svartån för att skapa energi och lust att lära.
       </p>
       <div class="features-grid" role="list">
         {dayHighlights.map((highlight) => (
@@ -263,23 +270,24 @@ const testimonials = [
         <h2 class="section-heading" id="contact-heading">Kontakta oss</h2>
         <p>Har du frågor om verksamheten, vill du boka ett möte eller anmäla ditt barn? Hör av dig så hjälper vi dig vidare.</p>
         <p>
-          <strong>Telefon:</strong> <a href="tel:+46455264930">0455-26 49 30</a><br />
-          <strong>E-post:</strong> <a href="mailto:info@grenadjarskolan.se">info@grenadjarskolan.se</a>
+          <strong>Telefon:</strong> <a href="tel:+4619213950">019-21 39 50</a><br />
+          <strong>E-post:</strong> <a href="mailto:grenadjarskolan@orebro.se">grenadjarskolan@orebro.se</a>
         </p>
         <p>
-          <strong>Besök:</strong> Östra Vittusgatan 1, 371 34 Karlskrona<br />
-          <strong>Expeditionstid:</strong> Vardagar 08.00–16.00
+          <strong>Besök:</strong> Grenadjärsgatan 1, 702 17 Örebro<br />
+          <strong>Expeditionstid:</strong> Vardagar 07.30–16.30
         </p>
       </div>
       <div>
         <h3>Kontakta elevhälsoteamet</h3>
         <p>
-          Elevhälsoteamet når du via expeditionen eller direkt via <a href="mailto:elevhalsa@grenadjarskolan.se">elevhalsa@grenadjarskolan.se</a>.
+          Elevhälsoteamet når du via expeditionen eller direkt via
+          <a href="mailto:elevhalsa.grenadjarskolan@orebro.se">elevhalsa.grenadjarskolan@orebro.se</a>.
           Vi arbetar förebyggande och kan hjälpa till med allt från studieteknik till stödinsatser.
         </p>
         <h3>Hitta hit</h3>
         <p>
-          Grenadjärskolan ligger centralt med närhet till kollektivtrafik. Busshållplatsen “Blekinge Tingsrätt” når du på två minuter och Karlskrona centralstation på tio.
+          Grenadjärskolan ligger centralt i kasernområdet med närhet till kollektivtrafik. Hållplatsen “Grenadjärstaden” når du på ett par minuter och Örebro resecentrum på tio.
         </p>
       </div>
     </div>
